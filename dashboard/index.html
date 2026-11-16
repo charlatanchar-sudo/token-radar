@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Launch Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-in">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div>
+        <h1>Token Launch Radar</h1>
+        <p class="tagline">Protocols that record no token yet, ranked by what a launch would be worth if their record stayed as it is.</p>
+      </div>
+    </div>
+    <dl class="snapshot-facts" id="snapshot-facts"></dl>
+  </div>
+  <div class="model-band">
+    <h2>The model</h2>
+    <p id="model-summary"></p>
+    <p class="model-note">Protocols whose token already trades are never ranked here; they set the category multiples the pre-token board is carried at. The watchlist is the floor, not the ceiling: every watchlist protocol is on the board, and the radar adds the pre-token protocols below the floor that pass the same product tests.</p>
+  </div>
+</header>
+
+<section class="controls" aria-label="Board controls">
+  <label class="ctl ctl-search">
+    <span>Search</span>
+    <input id="q" type="search" placeholder="Protocol name or slug" autocomplete="off">
+  </label>
+  <label class="ctl">
+    <span>Category</span>
+    <select id="f-category"><option value="">All categories</option></select>
+  </label>
+  <label class="ctl">
+    <span>Chain</span>
+    <select id="f-chain"><option value="">All chains</option></select>
+  </label>
+  <label class="ctl ctl-check">
+    <input id="f-watch" type="checkbox">
+    <span>Watchlist only</span>
+  </label>
+  <p class="showing" id="showing" role="status"></p>
+</section>
+
+<main>
+  <table class="board" id="board">
+    <thead>
+      <tr>
+        <th data-key="rank" class="num sortable">Rank</th>
+        <th data-key="name" class="sortable">Protocol</th>
+        <th data-key="category" class="sortable">Category</th>
+        <th>Chains</th>
+        <th data-key="tvl_usd" class="num sortable">TVL</th>
+        <th data-key="change_7d" class="num sortable">7d TVL</th>
+        <th data-key="multiple" class="num sortable">Multiple</th>
+        <th data-key="implied_value_usd" class="num sortable">Implied value</th>
+        <th>List</th>
+      </tr>
+    </thead>
+    <tbody id="board-body"></tbody>
+  </table>
+  <p class="empty" id="empty" hidden>No protocol on the board matches those filters.</p>
+</main>
+
+<footer>
+  <p>Built from one sealed DefiLlama snapshot; the page reads only its own data file and makes no network requests. An implied value is this radar's own claim about a hypothetical launch, not a prediction that a token will be issued.</p>
+</footer>
+
+<div class="scrim" id="scrim" hidden>
+  <article class="detail" id="detail" role="dialog" aria-modal="true" aria-labelledby="d-name"></article>
+</div>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
